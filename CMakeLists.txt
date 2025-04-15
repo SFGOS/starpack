@@ -135,7 +135,6 @@ target_link_libraries(starpack PRIVATE
     Threads::Threads
     -Wl,-Bstatic
         yaml-cpp
-        ${LIBGIT2_LIBRARY_STATIC}
     -Wl,-Bdynamic
 )
 
