@@ -77,15 +77,6 @@ include_directories(${CURL_INCLUDE_DIR})
 #
 find_package(yaml-cpp REQUIRED)
 
-#
-# libgit2 (statically linked)
-#
-# We'll treat libgit2 the same way, forcibly linking it statically.
-find_path(LIBGIT2_INCLUDE_DIR git2.h PATHS /usr/local/include /usr/include)
-if(NOT LIBGIT2_INCLUDE_DIR)
-    message(FATAL_ERROR "libgit2 headers not found!")
-endif()
-
 # If you installed a static libgit2 at /usr/local/lib/libgit2.a or similar:
 find_library(LIBGIT2_LIBRARY_STATIC NAMES git2.a libgit2.a PATHS /usr/local/lib /usr/lib)
 if(NOT LIBGIT2_LIBRARY_STATIC)
@@ -144,7 +135,6 @@ target_link_libraries(starpack PRIVATE
     Threads::Threads
     -Wl,-Bstatic
         yaml-cpp
-        ${LIBGIT2_LIBRARY_STATIC}
     -Wl,-Bdynamic
 )
 
