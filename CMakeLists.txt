@@ -90,7 +90,7 @@ include_directories(${LIBGIT2_INCLUDE_DIR})
 find_library(BROTLIDEC_LIBRARY brotlidec REQUIRED)
 find_library(BROTLIENC_LIBRARY brotlienc REQUIRED)
 find_library(NGHTTP2_LIBRARY nghttp2 REQUIRED)
-find_library(PCRE_LIBRARY pcre REQUIRED)
+find_library(PCRE_LIBRARY pcre2-8 REQUIRED)
 find_library(ZSTD_LIBRARY zstd REQUIRED)
 
 #
