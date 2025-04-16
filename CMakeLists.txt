@@ -77,13 +77,6 @@ include_directories(${CURL_INCLUDE_DIR})
 #
 find_package(yaml-cpp REQUIRED)
 
-# If you installed a static libgit2 at /usr/local/lib/libgit2.a or similar:
-find_library(LIBGIT2_LIBRARY_STATIC NAMES git2.a libgit2.a PATHS /usr/local/lib /usr/lib)
-if(NOT LIBGIT2_LIBRARY_STATIC)
-    message(FATAL_ERROR "Static libgit2 library (libgit2.a) not found!")
-endif()
-include_directories(${LIBGIT2_INCLUDE_DIR})
-
 #
 # Additional Libraries (dynamically linked)
 #
@@ -112,7 +105,7 @@ add_executable(starpack ${SOURCES})
 #
 # Linking Logic
 #
-# We want only yaml-cpp and libgit2 to be statically linked.
+# We want only yaml-cpp to be statically linked.
 # Everything else is dynamic. We'll use the linker flags:
 #   -Wl,-Bstatic -> subsequent libs are linked statically
 #   -Wl,-Bdynamic -> revert to dynamic linking for subsequent libs
