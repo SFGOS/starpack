@@ -1,2 +1,3 @@
 # Visual Studio Code workspace settings and cache
 .vscode/
+build/

@@ -196,8 +196,8 @@ int extract_archive_section(const std::string& archivePath,
         return 1;
     }
 
-    archive_read_support_format_tar(a);
-    archive_read_support_filter_gzip(a);
+    archive_read_support_filter_all(a);
+    archive_read_support_format_all(a);
 
     archive_write_disk_set_options(
         ext, ARCHIVE_EXTRACT_TIME | ARCHIVE_EXTRACT_PERM |
@@ -647,8 +647,8 @@ bool Updater::extractFileFromArchive(const std::string& archivePath,
         std::cerr << "Error: archive_read_new() failed.\n";
         return false;
     }
-    archive_read_support_format_tar(a);
-    archive_read_support_filter_gzip(a);
+    archive_read_support_filter_all(a);
+    archive_read_support_format_all(a); // changed to support all compression formats
 
     if (archive_read_open_filename(a, archivePath.c_str(), 10240) != ARCHIVE_OK) {
         std::cerr << "Error: Could not open " << archivePath
