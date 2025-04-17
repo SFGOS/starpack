@@ -21,6 +21,8 @@
 #include <curl/curl.h>    // For downloading files (libcurl)
 #include <string.h>       // For strerror, strcmp, etc.
 
+// Need to review logic
+
 namespace fs = std::filesystem;
 
 namespace { // Anonymous namespace for internal helpers and constants
